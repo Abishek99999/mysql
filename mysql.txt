@@ -1,0 +1,18 @@
+MYSQL 
+
+
+Stop service
+
+#set new password##
+Alter USER 'root'@'localhost' IDENTIFIED BY 'password@123';
+
+ALter USER 'root'@'localhost' IDENTIFIED with mysql_native_password BY 'password@123';
+
+Forgot pass.
+
+mkdir /var/run/mysqld
+chown mysql /var/run/mysqld
+mysqld_safe --skip-grant-tables &
+mysql --user=root mysql
+update mysql.user SET authentication_string=null where USER='root';
+flush privileges
